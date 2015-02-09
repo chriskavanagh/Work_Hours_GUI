@@ -37,6 +37,7 @@ class GUI:
 
 
 root = Tk()
+root.title("Work-Hours-GUI")
 mygui = GUI(root)
 root.mainloop()
 
