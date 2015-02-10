@@ -1,5 +1,5 @@
 from datetime import datetime
-from tkinter import *
+from Tkinter import *
 import sqlite3, sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, DateTime, Integer, String, MetaData
