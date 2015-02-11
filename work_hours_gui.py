@@ -32,11 +32,41 @@ session = Session()
 
 class GUI:
     def __init__(self, parent):
+        self.parent = parent
         frame = Frame(parent)
-        frame.pack()
+        frame.pack(expand=YES, fill=BOTH)
+
+        name_label = Label(frame, text="Enter Name:")
+        name_label.grid(row=0, sticky=W)
+
+        age_label = Label(frame, text="Enter Age:")
+        age_label.grid(row=1, sticky=W)
+        
+        
+        name_var = StringVar()
+        e1 = Entry(frame, textvariable=name_var)
+        e1.grid(row=0, column=1)
+
+        #name_var.set("Enter Name Please?") # use Label instead
+        #s = name_var.get()
+
+        age_var = StringVar()
+        e2 = Entry(frame, textvariable=age_var)
+        e2.grid(row=1, column=1)
+
+        #age_var.set("Enter Age Please?")   # use Label instead
+        #s2 = age_var.get()
+
+        add_button = Button(frame, text="Add")
+        add_button.grid(row=2, column=2)
+
+        quit_button = Button(frame, text="Quit")
+        quit_button.grid(row=2, column=3)
+        
 
 
 root = Tk()
+#root.geometry("350x400")
 root.title("Work-Hours-GUI")
 mygui = GUI(root)
 root.mainloop()
