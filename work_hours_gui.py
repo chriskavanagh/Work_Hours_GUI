@@ -46,17 +46,17 @@ class GUI:
         self.name_var = StringVar()
         e1 = Entry(frame, textvariable=self.name_var)
         e1.grid(row=0, column=1)
-        #self.name = name_var.get()
+        
 
         self.age_var =  IntVar()
         e2 = Entry(frame, textvariable=self.age_var)
         e2.grid(row=1, column=1)
-        #self.age = age_var.get()
+        
 
         add_button = Button(frame, text="Add", command=self.add_data)
         add_button.grid(row=2, column=2)
 
-        quit_button = Button(frame, text="Quit")
+        quit_button = Button(frame, text="Quit", command=parent.destroy)
         quit_button.grid(row=2, column=3)
 
     def add_data(self):
