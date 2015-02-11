@@ -46,22 +46,24 @@ class GUI:
         name_var = StringVar()
         e1 = Entry(frame, textvariable=name_var)
         e1.grid(row=0, column=1)
+        name = name_var.get()
 
-        #name_var.set("Enter Name Please?") # use Label instead
-        #s = name_var.get()
-
-        age_var = StringVar()
+        age_var =  IntVar()
         e2 = Entry(frame, textvariable=age_var)
         e2.grid(row=1, column=1)
+        age = age_var.get()
 
-        #age_var.set("Enter Age Please?")   # use Label instead
-        #s2 = age_var.get()
-
-        add_button = Button(frame, text="Add")
+        add_button = Button(frame, text="Add", command=self.add_data)
         add_button.grid(row=2, column=2)
 
         quit_button = Button(frame, text="Quit")
         quit_button.grid(row=2, column=3)
+
+    def add_data(self):
+        new_person = Test(name=name, age=age)
+        session.add(new_person)
+        session.commit()
+            
         
 
 
