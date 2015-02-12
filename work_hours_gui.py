@@ -54,9 +54,11 @@ class GUI:
         
 
         add_button = Button(frame, text="Add", command=self.add_data)
+        add_button.config(padx=5, pady=5)
         add_button.grid(row=2, column=2)
 
         quit_button = Button(frame, text="Quit", command=parent.destroy)
+        quit_button.config(padx=5, pady=5)
         quit_button.grid(row=2, column=3)
 
     def add_data(self):
@@ -65,6 +67,7 @@ class GUI:
         new_person = Test(name=name, age=age)
         session.add(new_person)
         session.commit()
+        session.close()
             
         
 
