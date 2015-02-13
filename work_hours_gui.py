@@ -47,21 +47,32 @@ class GUI:
         date = d.strftime("%Y-%m-%d")
 
         # create label to display date
-        date_label = Label(btm_frame, text=date)
-        date_label.pack(side=LEFT)
+        #date_label = Label(btm_frame, text=date)
+        #date_label.pack(side=LEFT)
 
+
+        # creat name label
         name_label = Label(frame, text="Enter Name:")
         name_label.grid(row=0, sticky=W)
 
+
+        # creat age label
         age_label = Label(frame, text="Enter Age:")
         age_label.grid(row=1, sticky=W)
-        
-        
+
+
+        # create text label
+        txt_label = Label(btm_frame, fg="white",bg="blue")
+        txt_label.pack(side=LEFT)
+
+            
+        # creat name variable and entry
         self.name_var = StringVar()
         e1 = Entry(frame, textvariable=self.name_var)
         e1.grid(row=0, column=1)
-        
 
+         
+        # creat age variable and entry
         self.age_var =  IntVar()
         e2 = Entry(frame, textvariable=self.age_var)
         e2.grid(row=1, column=1)
