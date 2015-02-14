@@ -1,5 +1,6 @@
 from datetime import datetime
 from Tkinter import *
+from tkMessageBox import *
 import sqlite3, sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, DateTime, Integer, String, MetaData
@@ -60,6 +61,11 @@ class GUI:
         age_label = Label(frame, text="Enter Age:")
         age_label.grid(row=1, sticky=W)
 
+
+        # create text label
+        #txt_label = Label(btm_frame, fg="white",bg="blue")
+        #txt_label.pack(side=LEFT)
+
             
         # creat name variable and entry
         self.name_var = StringVar()
@@ -76,13 +82,11 @@ class GUI:
         quit_button = Button(btm_frame, text="Quit", command=parent.destroy)
         quit_button.pack(side=RIGHT)
 ##        quit_button.config(padx=5, pady=5)
-##        quit_button.grid(row=2, column=3)
         
 
         add_button = Button(btm_frame, text="Add", command=self.add_data)
         add_button.pack(side=RIGHT, padx=5, pady=5)
 ##        add_button.config(padx=5, pady=5)
-##        add_button.grid(row=2, column=2)
 
         
 
@@ -93,6 +97,10 @@ class GUI:
         session.add(new_person)
         session.commit()
         session.close()
+        self.callback()
+
+    def callback(self):
+        showinfo("Data", "Data Added")
             
         
 
