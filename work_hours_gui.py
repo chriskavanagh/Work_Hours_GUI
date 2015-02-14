@@ -47,8 +47,8 @@ class GUI:
         date = d.strftime("%Y-%m-%d")
 
         # create label to display date
-        #date_label = Label(btm_frame, text=date)
-        #date_label.pack(side=LEFT)
+        date_label = Label(btm_frame, text=date)
+        date_label.pack(side=LEFT)
 
 
         # creat name label
@@ -59,11 +59,6 @@ class GUI:
         # creat age label
         age_label = Label(frame, text="Enter Age:")
         age_label.grid(row=1, sticky=W)
-
-
-        # create text label
-        txt_label = Label(btm_frame, fg="white",bg="blue")
-        txt_label.pack(side=LEFT)
 
             
         # creat name variable and entry
@@ -85,7 +80,7 @@ class GUI:
         
 
         add_button = Button(btm_frame, text="Add", command=self.add_data)
-        add_button.pack(side=RIGHT)
+        add_button.pack(side=RIGHT, padx=5, pady=5)
 ##        add_button.config(padx=5, pady=5)
 ##        add_button.grid(row=2, column=2)
 
