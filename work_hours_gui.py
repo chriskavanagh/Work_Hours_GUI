@@ -32,6 +32,8 @@ session = Session()
 
 
 class GUI:
+    '''Main GUI (Tkinter) Class'''
+    
     def __init__(self, parent):
         self.parent = parent
 
