@@ -57,15 +57,15 @@ class GUI:
 #------------------------Create Labels-------------------------------#
         
 
-        # create label to display date
+        # label to display date
         date_label = Label(btm_frame, text=date)
         date_label.pack(side=LEFT)
 
-        # create name label
+        # name label
         name_label = Label(frame, text="Enter Name:")
         name_label.grid(row=0, sticky=W)
 
-        # creat age label
+        # age label
         age_label = Label(frame, text="Enter Age:")
         age_label.grid(row=1, sticky=W)
 
@@ -98,66 +98,67 @@ class GUI:
         cell_label.grid(row=8, sticky=W)
         
 
-#---------------------Create Vars and Entry-----------------------#
+#----------------------Create Vars and Entry-------------------------#
         
             
-        # create name variable and entry
+        # name variable and entry
         self.name_var = StringVar()
         self.e1 = Entry(frame, textvariable=self.name_var)
         self.e1.grid(row=0, column=1)
          
-        # create age variable and entry
+        # age variable and entry
         self.age_var =  IntVar()
         self.e2 = Entry(frame, textvariable=self.age_var)
         self.e2.grid(row=1, column=1)
 
-        # create address variable and entry
+        # address variable and entry
         self.address_var = StringVar()
         self.e3 = Entry(frame, textvariable=self.address_var)
         self.e3.grid(row=2, column=1)
 
-        # create city variable and entry
+        # city variable and entry
         self.city_var = StringVar()
         self.e4 = Entry(frame, textvariable=self.city_var)
         self.e4.grid(row=3, column=1)
 
-        # create state variable and entry
+        # state variable and entry
         self.state_var = StringVar()
         self.e5 = Entry(frame, textvariable=self.state_var)
         self.e5.grid(row=4, column=1)
 
-        #create zip code variable and entry
+        # zip code variable and entry
         self.zip_var = IntVar()
         self.e6 = Entry(frame, textvariable=self.zip_var)
         self.e6.grid(row=5, column=1)
 
-        # create s.s.n variable and entry
+        # s.s.n variable and entry
         self.ssn_var = StringVar()
         self.e7 = Entry(frame, textvariable=self.ssn_var)
         self.e7.grid(row=6, column=1)
 
-        # create phone variable and entry
+        # phone variable and entry
         self.phone_var = StringVar()
         self.e8 = Entry(frame, textvariable=self.phone_var)
         self.e8.grid(row=7, column=1)
 
-        # create cell variable and entry
+        # cell variable and entry
         self.cell_var = StringVar()
         self.e9 = Entry(frame, textvariable=self.cell_var)
         self.e9.grid(row=8, column=1)
 
-        # create quit and add buttons
+        # quit and add buttons
         quit_button = Button(btm_frame, text="Quit", relief=GROOVE, command=parent.destroy)
         quit_button.pack(side=RIGHT)        
 
         add_button = Button(btm_frame, text="Add", relief=GROOVE, command=self.add_data)
-        add_button.pack(side=RIGHT, padx=5, pady=5)
+        add_button.pack(side=RIGHT, padx=1, pady=1)
+
+        search_button = Button(btm_frame, text="Search", relief=GROOVE)
+        search_button.pack(side=RIGHT, padx=1, pady=1)
 
         
 
-    def add_data(self):
-        '''add Employee info to .db'''
-        
+    def add_data(self):        
         name = self.name_var.get()
         age = self.age_var.get()
         addr = self.address_var.get()
@@ -175,8 +176,9 @@ class GUI:
         
 
     def callback(self):        
-        showinfo("Work_Hours_GUI", "Data Added")
+        showinfo("New-Employee", "Data Added")
         self.clear_entries()
+        
 
     def clear_entries(self):
         entries = [self.e1, self.e2, self.e3, self.e4, self.e5, self.e6, self.e7, self.e8, self.e9]
@@ -188,6 +190,6 @@ class GUI:
 if __name__ == '__main__':
     root = Tk()
     root.geometry("310x270")
-    root.title("Work-Hours-GUI")
+    root.title("Employee Info")
     mygui = GUI(root)
     root.mainloop()
