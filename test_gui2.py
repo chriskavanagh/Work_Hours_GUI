@@ -153,7 +153,7 @@ class GUI:
         add_button = Button(btm_frame, text="Add", relief=GROOVE, command=self.add_data)
         add_button.pack(side=RIGHT, padx=1, pady=1)
 
-        search_button = Button(btm_frame, text="Search", relief=GROOVE)
+        search_button = Button(btm_frame, text="Search", relief=GROOVE, command=self.search)
         search_button.pack(side=RIGHT, padx=1, pady=1)
 
         
@@ -184,6 +184,11 @@ class GUI:
         entries = [self.e1, self.e2, self.e3, self.e4, self.e5, self.e6, self.e7, self.e8, self.e9]
         for entry in entries:
             entry.delete(0, END)
+            
+
+    def search(self):
+        search_win = Toplevel()
+        search_win.title("Search")
             
         
 
