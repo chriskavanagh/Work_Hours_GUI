@@ -188,6 +188,12 @@ class GUI:
 
     def search(self):
         search_win = Toplevel()
+        top_frame = Frame(search_win)
+        top_frame.pack()
+        btm_frame = Frame(search_win)
+        btm_frame.pack(side=BOTTOM)
+        quit_button = Button(btm_frame, text="Quit",relief=GROOVE, command=search_win.destroy)
+        quit_button.pack(side=RIGHT,padx=1, pady=1)
         search_win.title("Search")
             
         
