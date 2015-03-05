@@ -172,22 +172,26 @@ class GUI:
         session.add(new_person)
         session.commit()
         session.close()
-        self.callback()    
+        self.callback()
+        return
         
 
     def callback(self):        
         showinfo("New-Employee", "Data Added")
         self.clear_entries()
+        return
         
 
     def clear_entries(self):
         entries = [self.e1, self.e2, self.e3, self.e4, self.e5, self.e6, self.e7, self.e8, self.e9]
         for entry in entries:
             entry.delete(0, END)
+        return
             
 
     def search(self):
         search_win = Toplevel()
+        search_win.geometry("540x300")
         search_win.title("Search")
 
         # top frame
@@ -210,6 +214,7 @@ class GUI:
             emp_label.config(height=2, width=40)
             emp_label.config(bg='white', fg='black')            
             emp_label.pack(expand=YES, fill=BOTH)
+        return
             
         
             
