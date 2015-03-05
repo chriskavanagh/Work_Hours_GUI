@@ -146,7 +146,7 @@ class GUI:
         self.e9 = Entry(frame, textvariable=self.cell_var)
         self.e9.grid(row=8, column=1)
 
-        # quit and add buttons
+        # quit, search and add buttons
         quit_button = Button(btm_frame, text="Quit", relief=GROOVE, command=parent.destroy)
         quit_button.pack(side=RIGHT)        
 
@@ -205,8 +205,11 @@ class GUI:
         # search all employees, put each emp. in label with For Loop
         res = session.query(Employee).all()
         for employee in res:
-            txt = (employee.name, employee.address)
-            emp_label = Label(search_win, text=txt).pack()
+            txt = (employee.name, employee.address, employee.city, employee.state, employee.zip, employee.ssn, employee.phone, employee.cell)
+            emp_label = Label(search_win, text=txt)
+            emp_label.config(height=2, width=40)
+            emp_label.config(bg='white', fg='black')            
+            emp_label.pack(expand=YES, fill=BOTH)
             
         
             
