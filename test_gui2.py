@@ -188,13 +188,27 @@ class GUI:
 
     def search(self):
         search_win = Toplevel()
+        search_win.title("Search")
+
+        # top frame
         top_frame = Frame(search_win)
         top_frame.pack()
+
+        # bottom frame
         btm_frame = Frame(search_win)
         btm_frame.pack(side=BOTTOM)
-        quit_button = Button(btm_frame, text="Quit",relief=GROOVE, command=search_win.destroy)
+
+        # quit button
+        quit_button = Button(btm_frame, text="Quit", relief=GROOVE, command=search_win.destroy)
         quit_button.pack(side=RIGHT,padx=1, pady=1)
-        search_win.title("Search")
+
+        # search all employees, put each emp. in label with For Loop
+        res = session.query(Employee).all()
+        for employee in res:
+            txt = (employee.name, employee.address)
+            emp_label = Label(search_win, text=txt).pack()
+            
+        
             
         
 
