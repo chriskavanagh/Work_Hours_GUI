@@ -191,7 +191,7 @@ class GUI:
 
     def search(self):
         search_win = Toplevel()
-        search_win.geometry("800x450")
+        #search_win.geometry("800x450")
         search_win.title("Search")
 
         # top frame
@@ -199,24 +199,23 @@ class GUI:
         top_frame.pack()
 
         # bottom frame
-        btm_frame = Frame(search_win)
+        btm_frame = Frame(search_win, relief=SUNKEN, borderwidth=1)
         btm_frame.pack(side=BOTTOM)
 
         # quit button
         quit_button = Button(btm_frame, text="Quit", relief=GROOVE, command=search_win.destroy)
-        quit_button.pack(side=RIGHT,padx=1, pady=1)
+        quit_button.grid(sticky=W) #sticky doesn't work
         
 
         # search all employees, put each emp. in label with For Loop
         res = session.query(Employee).all()
+        row = 0
         for employee in res:
             txt = "Name: {0}, Address: {1}, City: {2}, State: {3}, Zip: {4}, SSN: {5}, Phone: {6}, Cell: {7}".format(employee.name,employee.address,employee.city,employee.state, employee.zip, employee.ssn, employee.phone, employee.cell)
-            emp_label = Label(search_win, text=txt)            
-            emp_label.config(height=2, width=40)
-            emp_label.config(bg='white', fg='black')            
-            emp_label.pack(expand=YES, fill=BOTH)
-        return
-            
+            emp_label = Label(top_frame, text=txt, relief=RIDGE, width=130)
+            emp_label.grid(row=row, column=0, sticky=W) #sticky doesn't work
+            row += 1
+        return    
         
             
         
@@ -227,3 +226,16 @@ if __name__ == '__main__':
     root.title("Employee Info")
     mygui = GUI(root)
     root.mainloop()
+
+
+### search all employees, put each emp. in label with For Loop
+##        res = session.query(Employee).all()
+##        row = 0
+##        for employee in res:
+##            txt = "Name: {0}, Address: {1}, City: {2}, State: {3}, Zip: {4}, SSN: {5}, Phone: {6}, Cell: {7}".format(employee.name,employee.address,employee.city,employee.state, employee.zip, employee.ssn, employee.phone, employee.cell)
+##            emp_label = Label(top_frame, text=txt, relief=RIDGE, width=40)
+##            emp_label.grid(row=row, column=0)
+##            row += 1
+##            #emp_label.config(bg='white', fg='black')            
+##            emp_label.pack(expand=YES, fill=BOTH)
+##        return
