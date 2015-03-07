@@ -177,7 +177,7 @@ class GUI:
         
 
     def callback(self):        
-        showinfo("New-Employee", "Data Added")
+        showinfo("New Employee", "Data Added")
         self.clear_entries()
         return
         
@@ -192,19 +192,19 @@ class GUI:
     def search(self):
         search_win = Toplevel()
         #search_win.geometry("800x450")
-        search_win.title("Search")
+        search_win.title("Employee Search")
 
-        # top frame
-        top_frame = Frame(search_win)
-        top_frame.pack(fill=Y, expand=1)
+##        # top frame
+##        top_frame = Frame(search_win)
+##        top_frame.pack(fill=Y, expand=1)
+##
+##        # bottom frame
+##        btm_frame = Frame(search_win, relief=SUNKEN, borderwidth=1)
+##        btm_frame.pack(side=BOTTOM, fill=BOTH, expand=1)
 
-        # bottom frame
-        btm_frame = Frame(search_win, relief=SUNKEN, borderwidth=1)
-        btm_frame.pack(side=BOTTOM, fill=BOTH, expand=1)
-
-        # quit button
-        quit_button = Button(btm_frame, text="Quit", relief=GROOVE, command=search_win.destroy)
-        quit_button.grid(row=0, column=10, columnspan=2)
+##        # quit button
+##        quit_button = Button(search_win, text="Quit", relief=GROOVE, command=search_win.destroy)
+##        quit_button.grid(row=10, column=15, columnspan=2)
         
 
         # search all employees, put each emp. in label with For Loop
@@ -212,11 +212,11 @@ class GUI:
         row = 0
         for employee in res:
             txt = "Name: {0}, Address: {1}, City: {2}, State: {3}, Zip: {4}, SSN: {5}, Phone: {6}, Cell: {7}".format(employee.name,employee.address,employee.city,employee.state, employee.zip, employee.ssn, employee.phone, employee.cell)
-            ent = Entry(top_frame, relief=RIDGE, width=150)
+            ent = Entry(search_win, relief=RIDGE, width=150)
             ent.grid(row=row, column=0, columnspan=2, sticky=W, padx=5, pady=5)
             ent.insert(0, txt)
             row += 1
-        return     
+        return
         
             
         
@@ -227,3 +227,16 @@ if __name__ == '__main__':
     root.title("Employee Info")
     mygui = GUI(root)
     root.mainloop()
+
+
+### search all employees, put each emp. in label with For Loop
+##        res = session.query(Employee).all()
+##        row = 0
+##        for employee in res:
+##            txt = "Name: {0}, Address: {1}, City: {2}, State: {3}, Zip: {4}, SSN: {5}, Phone: {6}, Cell: {7}".format(employee.name,employee.address,employee.city,employee.state, employee.zip, employee.ssn, employee.phone, employee.cell)
+##            emp_label = Label(top_frame, text=txt, relief=RIDGE, width=40)
+##            emp_label.grid(row=row, column=0)
+##            row += 1
+##            #emp_label.config(bg='white', fg='black')            
+##            emp_label.pack(expand=YES, fill=BOTH)
+##        return
