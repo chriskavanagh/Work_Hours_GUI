@@ -119,11 +119,13 @@ class GUI:
         # city variable and entry
         self.city_var = StringVar()
         self.e4 = Entry(frame, textvariable=self.city_var)
+        self.e4.insert(0, "Roanoke")        # insert default value
         self.e4.grid(row=3, column=1)
 
         # state variable and entry
         self.state_var = StringVar()
         self.e5 = Entry(frame, textvariable=self.state_var)
+        self.e5.insert(0, "VA")             # insert default value
         self.e5.grid(row=4, column=1)
 
         # zip code variable and entry
@@ -146,15 +148,18 @@ class GUI:
         self.e9 = Entry(frame, textvariable=self.cell_var)
         self.e9.grid(row=8, column=1)
 
-        # quit, search and add buttons
+        # quit, search, clear, add buttons
         quit_button = Button(btm_frame, text="Quit", relief=GROOVE, command=parent.destroy)
         quit_button.pack(side=RIGHT)        
 
-        add_button = Button(btm_frame, text="Add", relief=GROOVE, command=self.add_data)
-        add_button.pack(side=RIGHT, padx=1, pady=1)
-
         search_button = Button(btm_frame, text="Search", relief=GROOVE, command=self.search)
         search_button.pack(side=RIGHT, padx=1, pady=1)
+
+        clear_button = Button(btm_frame, text="Clear", relief=GROOVE, command=self.clear_entries)
+        clear_button.pack(side=RIGHT, padx=1, pady=1)
+
+        add_button = Button(btm_frame, text="Add", relief=GROOVE, command=self.add_data)
+        add_button.pack(side=RIGHT, padx=1, pady=1)
 
         
 
