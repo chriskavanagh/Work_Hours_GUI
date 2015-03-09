@@ -160,7 +160,6 @@ class GUI:
 
         add_button = Button(btm_frame, text="Add", relief=GROOVE, command=self.add_data)
         add_button.pack(side=RIGHT, padx=1, pady=1)
-
         
 
     def add_data(self):        
@@ -178,52 +177,33 @@ class GUI:
         session.commit()
         session.close()
         self.callback()
-        return
-        
+        return        
 
     def callback(self):        
         showinfo("New Employee", "Data Added")
         self.clear_entries()
-        return
-        
+        return        
 
     def clear_entries(self):
         entries = [self.e1, self.e2, self.e3, self.e4, self.e5, self.e6, self.e7, self.e8, self.e9]
         for entry in entries:
             entry.delete(0, END)
-        return
-            
+        return            
 
     def search(self):
         search_win = Toplevel()
-        #search_win.geometry("800x450")
-        search_win.title("Employee Search")
-
-##        # top frame
-##        top_frame = Frame(search_win)
-##        top_frame.pack(fill=Y, expand=1)
-##
-##        # bottom frame
-##        btm_frame = Frame(search_win, relief=SUNKEN, borderwidth=1)
-##        btm_frame.pack(side=BOTTOM, fill=BOTH, expand=1)
-
-##        # quit button
-##        quit_button = Button(search_win, text="Quit", relief=GROOVE, command=search_win.destroy)
-##        quit_button.grid(row=10, column=15, columnspan=2)
-        
+        search_win.title("Employee Search")        
 
         # search all employees, put each emp. in label with For Loop
         res = session.query(Employee).all()
         row = 0
         for employee in res:
-            txt = "Name: {0}, Address: {1}, City: {2}, State: {3}, Zip: {4}, SSN: {5}, Phone: {6}, Cell: {7}".format(employee.name,employee.address,employee.city,employee.state, employee.zip, employee.ssn, employee.phone, employee.cell)
+            txt = "{0}) - Name: {1}, Address: {2}, City: {3}, State: {4}, Zip: {5}, SSN: {6}, Phone: {7}, Cell: {8}".format(employee.id, employee.name,employee.address,employee.city,employee.state, employee.zip, employee.ssn, employee.phone, employee.cell)
             ent = Entry(search_win, relief=RIDGE, width=150)
             ent.grid(row=row, column=0, columnspan=2, sticky=W, padx=5, pady=5)
             ent.insert(0, txt)
             row += 1
-        return
-        
-            
+        return            
         
 
 if __name__ == '__main__':
