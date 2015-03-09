@@ -227,6 +227,7 @@ class GUI:
         res = session.query(Employee).filter(Employee.id==emp_id).first()
         session.delete(res)
         session.commit()
+        showinfo("Employee", "Data Deleted")
         
         
 
