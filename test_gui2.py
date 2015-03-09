@@ -221,6 +221,7 @@ class GUI:
 
         del_button = Button(del_win, text="Delete Employee", relief=GROOVE, command=self.erase)
         del_button.grid(row=0, column=2, padx=5, pady=5)
+        return
 
     def erase(self):
         emp_id = self.employee_id.get()
@@ -228,6 +229,7 @@ class GUI:
         session.delete(res)
         session.commit()
         showinfo("Employee", "Data Deleted")
+        return
         
         
 
@@ -237,3 +239,4 @@ if __name__ == '__main__':
     root.title("Employee Info")
     mygui = GUI(root)
     root.mainloop()
+
