@@ -148,7 +148,7 @@ class GUI:
         self.e9 = Entry(frame, textvariable=self.cell_var)
         self.e9.grid(row=8, column=1)
 
-        # quit, search, clear, add buttons
+        # quit, search, clear, add, delete buttons
         quit_button = Button(btm_frame, text="Quit", relief=GROOVE, command=parent.destroy)
         quit_button.pack(side=RIGHT)        
 
@@ -156,7 +156,10 @@ class GUI:
         search_button.pack(side=RIGHT, padx=1, pady=1)
 
         clear_button = Button(btm_frame, text="Clear", relief=GROOVE, command=self.clear_entries)
-        clear_button.pack(side=RIGHT, padx=1, pady=1)
+        clear_button.pack(side=RIGHT, padx=1, pady=1)        
+
+        del_button = Button(btm_frame, text="Delete", relief=GROOVE, command=self.del_employee)
+        del_button.pack(side=RIGHT, padx=1, pady=1)
 
         add_button = Button(btm_frame, text="Add", relief=GROOVE, command=self.add_data)
         add_button.pack(side=RIGHT, padx=1, pady=1)
@@ -203,7 +206,24 @@ class GUI:
             ent.grid(row=row, column=0, columnspan=2, sticky=W, padx=5, pady=5)
             ent.insert(0, txt)
             row += 1
-        return            
+        return
+
+    def del_employee(self):
+        del_win = Toplevel()
+        del_win.title("Delete Employee")
+
+        id_label = Label(del_win, text="Enter Employee Id:")
+        id_label.grid(row=0, column=0)
+
+        self.employee_id = IntVar()
+        self.e10 = Entry(del_win, textvariable=self.employee_id)
+        self.e10.grid(row=0, column=1)
+
+        id = self.employee_id.get()
+        res = session.query(Employee).order_by(Employee.id==id).first()
+        session.delete(res)
+        session.commit()
+        
         
 
 if __name__ == '__main__':
