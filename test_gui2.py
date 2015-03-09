@@ -213,14 +213,18 @@ class GUI:
         del_win.title("Delete Employee")
 
         id_label = Label(del_win, text="Enter Employee Id:")
-        id_label.grid(row=0, column=0)
+        id_label.grid(row=0, column=0, padx=5, pady=5)
 
         self.employee_id = IntVar()
         self.e10 = Entry(del_win, textvariable=self.employee_id)
-        self.e10.grid(row=0, column=1)
+        self.e10.grid(row=0, column=1, padx=5, pady=5)
 
-        id = self.employee_id.get()
-        res = session.query(Employee).order_by(Employee.id==id).first()
+        del_button = Button(del_win, text="Delete Employee", relief=GROOVE, command=self.erase)
+        del_button.grid(row=0, column=2, padx=5, pady=5)
+
+    def erase(self):
+        emp_id = self.employee_id.get()
+        res = session.query(Employee).filter(Employee.id==emp_id).first()
         session.delete(res)
         session.commit()
         
