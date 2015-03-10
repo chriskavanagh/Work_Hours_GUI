@@ -197,14 +197,14 @@ class GUI:
         search_win = Toplevel()
         search_win.title("Employee Search")
 
-        # search all employees, put each emp. in label with For Loop
+        # search all employees, put each emp. in Entry Widget with For Loop
         res = session.query(Employee).all()
         row = 0
         column = 0
         for employee in res:
             txt = [employee.id, employee.name, employee.address, employee.city, employee.state, employee.zip, employee.ssn, employee.phone, employee.cell]
             for t in txt:
-                ent = Entry(search_win, relief=RIDGE, width=15)
+                ent = Entry(search_win, relief=RIDGE, width=19)
                 ent.grid(row=row, column=column, sticky=W, padx=1, pady=1)
                 ent.insert(0, t)
                 column += 1
@@ -244,3 +244,19 @@ if __name__ == '__main__':
     mygui = GUI(root)
     root.mainloop()
 
+
+## old search method
+##def search(self):
+##        search_win = Toplevel()
+##        search_win.title("Employee Search")        
+##
+##        # search all employees, put each emp. in label with For Loop
+##        res = session.query(Employee).all()
+##        row = 0
+##        for employee in res:
+##            txt = "{0}) - Name: {1}, Address: {2}, City: {3}, State: {4}, Zip: {5}, SSN: {6}, Phone: {7}, Cell: {8}".format(employee.id, employee.name,employee.address,employee.city,employee.state, employee.zip, employee.ssn, employee.phone, employee.cell)
+##            ent = Entry(search_win, relief=RIDGE, width=150)
+##            ent.grid(row=row, column=0, columnspan=2, sticky=W, padx=5, pady=5)
+##            ent.insert(0, txt)
+##            row += 1
+##        return
