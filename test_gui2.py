@@ -197,9 +197,37 @@ class GUI:
         search_win = Toplevel()
         search_win.title("Employee Search")
 
+        # add Labels for employee attributes
+        id_label = Label(search_win, text="Id")
+        id_label.grid(row=0, column=0, padx=2, pady=2)
+
+        name_label = Label(search_win, text="Name")
+        name_label.grid(row=0, column=1, padx=2, pady=2)
+
+        addr_label = Label(search_win, text="Address")
+        addr_label.grid(row=0, column=2, padx=2, pady=2)
+
+        city_label = Label(search_win, text="City")
+        city_label.grid(row=0, column=3, padx=2, pady=2)
+
+        state_label = Label(search_win, text="State")
+        state_label.grid(row=0, column=4, padx=2, pady=2)
+
+        zip_label = Label(search_win, text="Zip")
+        zip_label.grid(row=0, column=5, padx=2, pady=2)
+
+        ssn_label = Label(search_win, text="SSN")
+        ssn_label.grid(row=0, column=6, padx=2, pady=2)
+
+        cell_label = Label(search_win, text="Cell")
+        cell_label.grid(row=0, column=7, padx=2, pady=2)
+
+        phone_label = Label(search_win, text="Phone")
+        phone_label.grid(row=0, column=8, padx=2, pady=2)
+
         # search all employees, put each emp. in Entry Widget with For Loop
         res = session.query(Employee).all()
-        row = 0
+        row = 1
         column = 0
         for employee in res:
             txt = [employee.id, employee.name, employee.address, employee.city, employee.state, employee.zip, employee.ssn, employee.phone, employee.cell]
@@ -243,6 +271,7 @@ if __name__ == '__main__':
     root.title("Employee Info")
     mygui = GUI(root)
     root.mainloop()
+
 
 
 ## old search method
