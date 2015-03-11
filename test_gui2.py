@@ -197,40 +197,19 @@ class GUI:
         search_win = Toplevel()
         search_win.title("Employee Search")
 
-        # add Labels for employee attributes
-        id_label = Label(search_win, text="Id")
-        id_label.grid(row=0, column=0, padx=2, pady=2)
-
-        name_label = Label(search_win, text="Name")
-        name_label.grid(row=0, column=1, padx=2, pady=2)
-
-        addr_label = Label(search_win, text="Address")
-        addr_label.grid(row=0, column=2, padx=2, pady=2)
-
-        city_label = Label(search_win, text="City")
-        city_label.grid(row=0, column=3, padx=2, pady=2)
-
-        state_label = Label(search_win, text="State")
-        state_label.grid(row=0, column=4, padx=2, pady=2)
-
-        zip_label = Label(search_win, text="Zip")
-        zip_label.grid(row=0, column=5, padx=2, pady=2)
-
-        ssn_label = Label(search_win, text="SSN")
-        ssn_label.grid(row=0, column=6, padx=2, pady=2)
-
-        cell_label = Label(search_win, text="Cell")
-        cell_label.grid(row=0, column=7, padx=2, pady=2)
-
-        phone_label = Label(search_win, text="Phone")
-        phone_label.grid(row=0, column=8, padx=2, pady=2)
+        # create labels for each employee attribute
+        attr = ["Id","Name","Age","Address","City","State","Zip","SSN","Cell","Phone"]
+        column = 0
+        for a in attr:
+                Label(search_win, text=a).grid(row=0,column=column,padx=2, pady=2)
+                column += 1
 
         # search all employees, put each emp. in Entry Widget with For Loop
         res = session.query(Employee).all()
         row = 1
         column = 0
         for employee in res:
-            txt = [employee.id, employee.name, employee.address, employee.city, employee.state, employee.zip, employee.ssn, employee.phone, employee.cell]
+            txt = [employee.id, employee.name, employee.age, employee.address, employee.city, employee.state, employee.zip, employee.ssn, employee.phone, employee.cell]
             for t in txt:
                 ent = Entry(search_win, relief=RIDGE, width=19)
                 ent.grid(row=row, column=column, sticky=W, padx=1, pady=1)
@@ -271,21 +250,3 @@ if __name__ == '__main__':
     root.title("Employee Info")
     mygui = GUI(root)
     root.mainloop()
-
-
-
-## old search method
-##def search(self):
-##        search_win = Toplevel()
-##        search_win.title("Employee Search")        
-##
-##        # search all employees, put each emp. in label with For Loop
-##        res = session.query(Employee).all()
-##        row = 0
-##        for employee in res:
-##            txt = "{0}) - Name: {1}, Address: {2}, City: {3}, State: {4}, Zip: {5}, SSN: {6}, Phone: {7}, Cell: {8}".format(employee.id, employee.name,employee.address,employee.city,employee.state, employee.zip, employee.ssn, employee.phone, employee.cell)
-##            ent = Entry(search_win, relief=RIDGE, width=150)
-##            ent.grid(row=row, column=0, columnspan=2, sticky=W, padx=5, pady=5)
-##            ent.insert(0, txt)
-##            row += 1
-##        return
