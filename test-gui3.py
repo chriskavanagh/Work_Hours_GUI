@@ -15,7 +15,7 @@ class Employee(Base):
     __tablename__ = 'employee'
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
-    age = Column(String(2))
+    age = Column(Integer)
     address = Column(String(250))
     city = Column(String(10))
     state = Column(String(2))
@@ -25,7 +25,7 @@ class Employee(Base):
     cell = Column(String(12))
 
 # create engine for Session connection
-engine = create_engine('sqlite:///employee.db',echo=True)
+engine = create_engine('sqlite:///employee.db')
 
 # create all tables in engine ('CREATE TABLE' in raw SQL)
 Base.metadata.create_all(engine)
@@ -108,7 +108,7 @@ class GUI:
         self.e1.grid(row=0, column=1)
          
         # age variable and entry
-        self.age_var =  StringVar()     #IntVar()
+        self.age_var =  StringVar()     # IntVar()
         self.e2 = Entry(frame, textvariable=self.age_var, validate="key", validatecommand=vcmd)
         self.e2.grid(row=1, column=1)
 
