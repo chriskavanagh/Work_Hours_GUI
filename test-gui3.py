@@ -109,7 +109,7 @@ class GUI:
          
         # age variable and entry
         self.age_var =  StringVar()     # IntVar()
-        self.e2 = Entry(frame, textvariable=self.age_var, validate="key", validatecommand=vcmd)
+        self.e2 = Entry(frame, textvariable=self.age_var,validate="key", validatecommand=vcmd)                                 
         self.e2.grid(row=1, column=1)
 
         # address variable and entry
@@ -150,20 +150,20 @@ class GUI:
         self.e9.grid(row=8, column=1)
 
         # quit, search, clear, add, delete buttons
-        quit_button = Button(btm_frame, text="Quit", relief=GROOVE, command=parent.destroy)
-        quit_button.pack(side=RIGHT)        
+        quit_button = Button(btm_frame, text="Quit", relief=RAISED, command=parent.destroy, fg="white", bg="gray66")
+        quit_button.pack(side=RIGHT, padx=2, pady=2)        
 
-        search_button = Button(btm_frame, text="Search", relief=GROOVE, command=self.search)
-        search_button.pack(side=RIGHT, padx=1, pady=1)
+        search_button = Button(btm_frame, text="Search", relief=RAISED, command=self.search, fg="white", bg="gray66")
+        search_button.pack(side=RIGHT, padx=2, pady=2)
 
-        clear_button = Button(btm_frame, text="Clear", relief=GROOVE, command=self.clear_entries)
-        clear_button.pack(side=RIGHT, padx=1, pady=1)        
+        clear_button = Button(btm_frame, text="Clear", relief=RAISED, command=self.clear_entries, fg="white", bg="gray66")
+        clear_button.pack(side=RIGHT, padx=2, pady=2)        
 
-        del_button = Button(btm_frame, text="Delete", relief=GROOVE, command=self.del_employee)
-        del_button.pack(side=RIGHT, padx=1, pady=1)
+        del_button = Button(btm_frame, text="Delete", relief=RAISED, command=self.del_employee, fg="white", bg="red")
+        del_button.pack(side=RIGHT, padx=2, pady=2)
 
-        add_button = Button(btm_frame, text="Add", relief=GROOVE, command=self.add_data)
-        add_button.pack(side=RIGHT, padx=1, pady=1)
+        add_button = Button(btm_frame, text="Add", relief=RAISED, command=self.add_data, fg="white", bg="gray66")
+        add_button.pack(side=RIGHT, padx=2, pady=2)
         
 
     def add_data(self):        
@@ -199,8 +199,9 @@ class GUI:
 
     def clear_entries(self):
         entries = [self.e1, self.e2, self.e3, self.e4, self.e5, self.e6, self.e7, self.e8, self.e9]
-        for entry in entries:
-            entry.delete(0, END)
+        [e.delete(0,END) for e in entries]    # list comprehension (instead of for loop)
+##        for entry in entries:
+##            entry.delete(0, END)
         return            
 
     def search(self):
@@ -260,3 +261,4 @@ if __name__ == '__main__':
     root.title("Employee Info")
     mygui = GUI(root)
     root.mainloop()
+
